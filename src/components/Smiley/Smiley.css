@@ -1,0 +1,11 @@
+.smiley-container {
+  display: grid;
+  place-items: center;
+}
+
+.smiley {
+  display: grid;
+  width: calc(16 * var(--square-size));
+  grid-template-columns: repeat(16, var(--square-size));
+  grid-template-rows: repeat(10, var(--square-size));
+}

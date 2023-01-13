@@ -1,0 +1,90 @@
+:root {
+  --bg-colour: #242424;
+  --secondary-colour: #fff6a5;
+  --primary-colour: white;
+  --square-size: 2rem;
+
+  --secondary-font-family: "Inter", sans-serif;
+
+  padding: 0;
+  margin: 0;
+  scroll-behavior: smooth;
+  color: white;
+}
+
+.App {
+  text-align: center;
+  background: var(--bg-colour);
+  padding-block-end: 3rem;
+}
+
+p {
+  font-size: 1.3rem;
+  font-family: var(--secondary-font-family);
+}
+
+p.micro {
+  font-size: 0.8rem;
+  margin-block: 0.5rem;
+}
+
+body {
+  background: var(--bg-colour);
+  color: var(--primary-colour);
+  font-family: "KyivType Sans";
+}
+
+.title {
+  font-size: 8rem;
+  margin-bottom: 0;
+  font-family: "KyivType Sans";
+}
+
+.front-page-container h1 {
+  font-size: 8rem;
+  margin: 0;
+}
+
+.header {
+  position: fixed;
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: min-content 1fr;
+  grid-gap: 1rem;
+}
+
+.front-page-container {
+  display: grid;
+  grid-template-rows: 1fr 10rem;
+  height: 100vh;
+  place-items: center;
+}
+
+.about-me {
+  padding: 4rem;
+  /* height: calc(100vh - 10rem); */
+  text-align: start;
+}
+
+.split-window {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-block: 3rem;
+}
+
+.scroller-page {
+  display: grid;
+  place-items: start;
+  height: 100vh;
+  padding-inline: 4rem;
+}
+
+.scroller-page h1 {
+  font-family: 'KyivTypeTitling-Regular3';
+}
+
+@media (max-width: 700px) {
+  .scroller-page {
+    height: 100%;
+  }
+}

@@ -1,0 +1,20 @@
+.square {
+  width: var(--square-size);
+  height: var(--square-size);
+  background-color: var(--secondary-colour);
+}
+
+.square.clickable {
+  cursor: pointer;
+
+}
+
+.square.clickable:hover {
+    outline: solid 5px var(--bg-colour);
+    outline-offset: -6px;
+}
+
+.animate-square {
+  opacity: 0;
+  height: 0;
+}

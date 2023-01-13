@@ -1,0 +1,20 @@
+.page-scroller {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  font-size: 2rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.page-scroller svg {
+  position: absolute;
+  transition: transform 0.1s ease-in;
+  transform: rotate(90deg);
+  height: 2rem;
+}
+
+.page-scroller:hover > svg {
+  /* transform: translateY(10%); */
+}

@@ -1,0 +1,38 @@
+.nav-menu {
+  height: 2rem;
+  min-width: 2rem;
+  border-radius: 3rem;
+  border: 1px solid white;
+  display: flex;
+  gap: 3rem;
+  white-space: nowrap;
+  place-items: center;
+  padding-inline: 3rem;
+  transition: padding-inline 0.6s ease-in-out;
+}
+
+.nav-menu.hidden {
+    padding-inline: 0;
+      cursor: pointer;
+}
+
+.nav-menu.hidden:hover {
+  background-color: white;
+  outline: solid 5px var(--bg-colour);
+  outline-offset: -6px;
+}
+
+h3 {
+  margin: 0;
+  flex-shrink: 0;
+}
+
+a { 
+  color: white;
+  text-decoration: none;
+}
+
+.menu-item {
+    cursor: pointer;
+}
+
