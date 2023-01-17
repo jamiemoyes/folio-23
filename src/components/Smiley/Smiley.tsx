@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import './Smiley.css';
 import { Square } from '../../shapes/Square';
 import { animate, stagger, spring } from 'motion';
@@ -23,7 +23,7 @@ const Smiley = () => {
     <div className="smiley-container">
       <div className="smiley">
         {[...Array(160).keys()].map((_, idx) =>
-          squareIndexes.includes(idx) ? <Square id={idx} animate /> : <div />
+          squareIndexes.includes(idx) ? <Square id={String(idx)} animate /> : <div />
         )}
       </div>
     </div>

@@ -4,10 +4,11 @@ import { PageScroller } from './components/PageScroller/PageScroller';
 import { Smiley } from './components/Smiley/Smiley';
 import { Square } from './shapes/Square';
 import { Scroller } from '@jamiemoyes/project-scroller';
-import mockProjects from './assets/projects.json';
 import { format, parseISO } from 'date-fns';
 import { useEffect, useState } from 'react';
-
+import { useProjects } from './graph/useProjects';
+import { isEmpty } from 'lodash';
+import { QueryClient, QueryClientProvider } from 'react-query';
 function formatDate(date: string) {
   return format(parseISO(date), 'MMMM yyyy');
 }
@@ -20,7 +21,7 @@ function projectMapper({
   description
 }: {
   title: string;
-  subtitle: string;
+  subtitle?: string;
   startDate: string;
   endDate?: string;
   description: string;
@@ -31,12 +32,26 @@ function projectMapper({
       subtitle,
       extraInfo: `${formatDate(startDate)} - ${endDate ? formatDate(endDate) : 'Present'}`
     },
-    main: { title, body: description }
+    main: {
+      title,
+      body: description
+    }
   };
 }
 
+const queryClient = new QueryClient();
+
 const App = () => {
-  const projects = mockProjects.map(projectMapper);
+  return (
+    <div className="App">
+      <QueryClientProvider client={queryClient}>
+        <Folio />
+      </QueryClientProvider>
+    </div>
+  );
+};
+
+const Folio = () => {
   const [menuOpen, setMenuOpen] = useState(true);
 
   useEffect(() => {
@@ -54,18 +69,32 @@ const App = () => {
     }, ioOptions);
 
     const target = document.querySelector('.front-page-container') as HTMLElement;
-    observer.observe(target);
-    return () => {
-      observer.unobserve(target);
-    };
+    if (target) {
+      observer.observe(target);
+      return () => {
+        if (target) observer.unobserve(target);
+      };
+    }
   }, [setMenuOpen]);
+
+  const { data, isLoading, isSuccess, error } = useProjects();
+  if (isLoading) {
+    return <>Loading...</>;
+  }
+
+  if (error) {
+    return <>{error}</>;
+  }
+  if (!isSuccess && !error) return <>Sending Requuest</>;
+
+  const projects = data.folioCollection.items.map(projectMapper);
 
   function handleMenuOpen() {
     return menuOpen && setMenuOpen(false);
   }
 
   return (
-    <div className="App">
+    <>
       <section className="header">
         <Square
           id="menu-square"
@@ -100,7 +129,7 @@ const App = () => {
         <h1 className="title">Work</h1>
         <Scroller contents={projects} />
       </section>
-    </div>
+    </>
   );
 };
 

@@ -9,6 +9,7 @@
   place-items: center;
   padding-inline: 3rem;
   transition: padding-inline 0.6s ease-in-out;
+
 }
 
 .nav-menu.hidden {
@@ -36,3 +37,9 @@ a {
     cursor: pointer;
 }
 
+@media (max-width: 700px) {
+  .nav-menu {
+    gap: 1rem;
+    padding-inline: 1rem;
+  }
+}

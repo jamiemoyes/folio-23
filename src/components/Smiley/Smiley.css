@@ -9,3 +9,9 @@
   grid-template-columns: repeat(16, var(--square-size));
   grid-template-rows: repeat(10, var(--square-size));
 }
+
+@media (max-width: 700px) {
+  .smiley-container {
+    --square-size: 1.5rem;
+  }
+}

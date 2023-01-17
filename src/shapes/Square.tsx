@@ -1,20 +1,35 @@
 import './Square.css';
+import { MouseEventHandler } from 'react';
 
-interface props {
+export interface SquareProps {
   id: string;
   animate?: boolean;
   clickable?: boolean;
   isOpen?: boolean;
-  onClick?: Function;
+  onClick?: MouseEventHandler;
 }
 
-const Square = ({ id, animate = true, clickable = false, isOpen, onClick, ...rest }: props) => {
+const Square = ({
+  id,
+  animate = true,
+  clickable = false,
+  isOpen,
+  onClick,
+  ...rest
+}: SquareProps) => {
   const isClickable = clickable && isOpen;
   return (
     <div
       id={String(id)}
-      className={`square ${animate ? `animate-square` : ''} ${isClickable && 'clickable'}`}
-      onClick={isClickable ? onClick : () => {}}
+      data-testid={`square-${id}`}
+      className={`square ${animate ? `animate-square` : ''} ${isClickable ? 'clickable' : ''}`}
+      onClick={
+        isClickable
+          ? onClick
+          : () => {
+              console.log('substitue');
+            }
+      }
       {...rest}
     />
   );

@@ -87,4 +87,17 @@ body {
   .scroller-page {
     height: 100%;
   }
+
+  .title {
+    font-size: 3rem;
+    padding-block: 1rem;
+  }
+
+  .split-window {
+    grid-template-columns: 1fr;
+    padding-block: 1rem;
+  }
+
+  .header {bottom: 0;}
+
 }
